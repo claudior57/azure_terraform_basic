@@ -87,3 +87,22 @@ demo - azure basic iac configs for a working cluster (should be used only for de
     terraform init
     terraform apply --auto-approve
   ```
+
+- after running the commands you will be able to access the page from the nginx server on the browser, and do an ssh to it using the key generated on the root folder of this repo,(ec2 ip output example:34.239.139.80)
+  ##### wget
+  ```
+  wget "http://34.239.139.80/"
+  cat index.html
+  ```  
+  ##### ssh
+  ```
+  ssh admin-staging@34.239.139.80 -i ./id_rsa_iaclab
+  ```
+
+- if you want to test the sns notification alarm to your email you will need to confirm the email subscription on the sns topic
+
+- When you finish with the demo please run the Terraform_destroy.sh, or destroy it individually using `terraform destroy` in each subfolder of the ./terraform and verify if the resources were destroyed properly
+  ```
+  cd terraform
+  ./terraform_destroy.sh
+  ```
